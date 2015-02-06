@@ -2,6 +2,7 @@ import scala.swing._
 import scala.swing.event._
 
 class CaseLabel (t : UI, n : Int) extends Label {
+	preferredSize = new Dimension(50,50)
 	private var discovered = false
 	var v = "?"
 	var num = n
@@ -45,7 +46,7 @@ class GrilleMode(t : UI, x : Int = 0, y : Int = 0, b : Int = 0) extends MenuItem
                         	border = Swing.LineBorder(new Color(0,0,0))
                         })
                 	contents ++= t.lstLabel
-
+        t.preferredSize = new Dimension(x*50 +15,y*50 +15)
 		}
 		t.x = x
 	        t.y = y
@@ -58,10 +59,12 @@ class GrilleMode(t : UI, x : Int = 0, y : Int = 0, b : Int = 0) extends MenuItem
                         def apply {
                                 println(text)
 				t.lstLabel.foreach(l => l.clear())
+				t.nbDiscovered = 0
 			}
                 }
         }
 }
+
 
 class UI extends MainFrame {
 	var x = 5
